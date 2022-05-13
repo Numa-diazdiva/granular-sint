@@ -1,0 +1,472 @@
+#N canvas 2060 84 1523 997 10;
+#N canvas 2417 227 1082 576 interfaz 0;
+#X obj 90 109 cnv 15 653 411 empty empty empty 20 12 0 14 -116509 -66577
+0;
+#N canvas 1925 74 1920 1030 sg1 0;
+#X obj 1720 10 cnv 15 287 391 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 194 -47 cnv 15 227 386 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 200 170 cnv 15 214 130 empty empty empty 20 12 0 14 -253619
+-66577 0;
+#X obj 201 -20 cnv 15 213 185 empty empty empty 20 12 0 14 -1 -66577
+0;
+#X obj 207 -10 cnv 7 199 138 empty empty empty 20 12 0 14 -241014 -66577
+0;
+#X obj 1200 -442 bng 15 250 50 0 empty sg1_cargar empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1200 -421 openpanel;
+#X msg 1200 -400 read -resize \$1 muestra;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array muestra 2.46857e+006 float 2;
+#X coords 0 1 2.46857e+006 -1 200 140 1;
+#X restore 207 -10 graph;
+#X obj 1200 -379 soundfiler;
+#X floatatom 1215 -352 9 0 0 0 - - -;
+#X obj 1200 -322 expr 44100 / $f1;
+#X obj 1200 -301 phasor~;
+#X obj 1200 -280 *~;
+#X obj 897 38 tabread4~ muestra;
+#X obj 1104 251 *~;
+#X obj 830 215 pack 0 10;
+#X obj 1042 -80 samphold~;
+#X obj 898 3 +~;
+#X obj 983 286 env~;
+#X obj 830 236 line~;
+#X floatatom 920 -140 10 0 0 0 - - -;
+#X obj 209 140 hsl 196 15 0 1 0 0 empty posicionlect empty -2 -8 0
+10 -133153 -240385 -1 2174 1;
+#N canvas 846 241 453 353 loc 0;
+#X obj 94 100 snapshot~;
+#X obj 129 71 metro 20;
+#X obj 129 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 217 11 r lb;
+#X msg 217 32 1;
+#X obj 60 62 inlet~;
+#X obj 94 122 s posicionlect;
+#X obj 280 140 inlet;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 0 0;
+#X restore 1250 35 pd loc;
+#X obj 1759 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1790 195 samplerate~;
+#X obj 1790 216 /~ 256;
+#X obj 1790 267 osc~;
+#X msg 1880 235 0;
+#X obj 1790 288 *~ -0.5;
+#X obj 1790 309 +~ 0.5;
+#X obj 1790 330 tabwrite~ hanning;
+#X obj 897 119 *~;
+#X obj 933 63 *~ 256;
+#X obj 932 90 tabread4~ hanning;
+#X obj 1790 355 table hanning 256;
+#X obj 1760 50 loadbang;
+#X obj 1760 75 s lb;
+#X obj 400 580 snapshot~;
+#X obj 340 500 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 340 523 metro 20;
+#X floatatom 400 605 25 0 0 0 - - -;
+#X obj 920 -199 * 44.1;
+#X floatatom 920 -249 5 0 0 0 - sg1_tam -;
+#X obj 790 -154 line~;
+#X msg 790 -205 1 \$1;
+#X obj 790 -270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 790 -240 f;
+#X obj 920 -116 sig~;
+#X obj 897 -47 *~;
+#X obj 610 -330 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 670 -104 random 104617;
+#X obj 670 -79 sig~;
+#X obj 1560 -193 line~;
+#X msg 1560 -244 1 \$1;
+#X obj 1540 -330 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1610 -244 del 0;
+#X msg 1610 -219 0 1;
+#X obj 1560 -279 f;
+#X obj 1560 -101 tabread4~ muestra;
+#X obj 1560 -20 *~;
+#X obj 1596 -76 *~ 256;
+#X obj 1595 -49 tabread4~ hanning;
+#X obj 1560 -150 *~;
+#X obj 1575 -339 expr $f1 * 1000 / 44100;
+#X obj 1759 155 r lb;
+#X obj 207 -40 bng 15 250 50 0 sg1_cargar empty CARGAR 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 0 450 300 graf1 0;
+#X obj 82 157 s sg1-random;
+#X obj 82 49 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 82 72 sel 1;
+#X msg 82 102 label RANDOM;
+#X msg 102 132 label LINEAL;
+#X obj 80 20 inlet;
+#X obj 240 80 s sg1_randomSW;
+#X connect 1 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X restore 100 220 pd graf1;
+#N canvas 880 200 454 329 switch 0;
+#X obj 41 96 inlet~;
+#X obj 140 96 inlet~;
+#X obj 40 260 outlet~;
+#X obj 41 170 *~;
+#X obj 140 170 *~;
+#X obj 230 40 r sg1_randomSW;
+#X obj 270 66 sel 0;
+#X obj 61 140 line 0 20;
+#X msg 270 91 1;
+#X obj 160 140 line 0 20;
+#X msg 300 110 0;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 6 1 10 0;
+#X connect 7 0 3 1;
+#X connect 8 0 9 0;
+#X connect 9 0 4 1;
+#X connect 10 0 9 0;
+#X restore 990 -30 pd switch;
+#X obj 206 175 cnv 15 201 119 empty empty empty 20 12 0 14 -133153
+-66577 0;
+#X obj 329 181 cnv 5 73 16 empty sg1-random LINEAL 7 6 1 13 -49868
+-262144 0;
+#X obj 370 203 vsl 11 70 0 4 0 0 empty sg1_pr_vol VOL -4 81 0 10 -99865
+-260097 -252289 5500 1;
+#X obj 220 180 bng 14 250 50 0 empty empty reproduccion: 16 6 0 10
+-67617 -260097 -1;
+#X obj 840 -205 del;
+#X msg 840 -180 0 0;
+#X obj 610 -300 metro 100;
+#X obj 1090 320 outlet~;
+#X obj 1160 320 outlet~;
+#X text 1550 -380 Lectura de un ciclo;
+#X obj 1287 -252 s arch_muestras;
+#X obj 670 -10 /~;
+#X obj 722 -43 r arch_muestras;
+#N canvas 880 200 454 329 switch 0;
+#X obj 41 96 inlet~;
+#X obj 140 96 inlet~;
+#X obj 40 260 outlet~;
+#X obj 41 170 *~;
+#X obj 140 170 *~;
+#X obj 230 40 r sg1_randomSW;
+#X obj 270 66 sel 0;
+#X obj 61 140 line 0 20;
+#X msg 270 91 1;
+#X obj 160 140 line 0 20;
+#X msg 300 110 0;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 6 1 10 0;
+#X connect 7 0 3 1;
+#X connect 8 0 9 0;
+#X connect 9 0 4 1;
+#X connect 10 0 9 0;
+#X restore 1250 5 pd switch;
+#X text 1316 2 pos indicador;
+#X obj 670 -450 r sg1_metro;
+#X obj 286 243 nbx 5 14 -1e+037 1e+037 0 0 sg1_tam sg1_pr_tam tam.grano(ms)
+0 -8 0 10 -41611 -262144 -1 20 256;
+#X obj 390 203 vu 10 80 sg1_vu empty -1 -8 0 10 -66577 -1 0 0;
+#X text 840 -400 SEÑAL DE CONTROL y reproductor;
+#X obj 670 -425 t b f;
+#X obj 260 -400 del 10;
+#X msg 300 -380 0;
+#X msg 260 -360 1;
+#X obj 226 218 cnv 2 100 2 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 221 211 tgl 15 0 sg1_metro_io empty sinc 30 -1 0 10 -12484 -262144
+-1 0 1;
+#X obj 286 212 nbx 5 14 -1e+037 1e+037 0 0 sg1_metro sg1_pr_metro iteración
+0 -8 0 10 -45772 -262144 -1 500 256;
+#X obj 221 241 bng 15 250 50 0 gr_play empty play.gr 17 6 0 10 -41611
+-260097 -1;
+#X obj 790 -360 r gr_play;
+#X obj 1869 51 r arch_muestras;
+#X obj 1869 96 f;
+#X text 1330 -430 Lector principal;
+#X obj 193 316 cnv 4 150 3 sg1_repSW empty empty 20 12 0 14 -261678
+-66577 0;
+#X obj 222 361 hradio 15 1 0 2 sg1_rep_sw sg1_pr_rep_SW empty 0 -8
+0 10 -41611 -260097 -1 0;
+#X obj 340 310 hsl 54 15 0 1 0 0 sg1_limpio sg1_pr_limpio LIMPIO 19
+6 0 10 -74899 -131105 -262144 0 1;
+#X obj 983 311 - 100;
+#X obj 120 95 r lb;
+#X msg 120 120 0;
+#X obj 600 -370 r sg1_metro_io;
+#X msg 95 166 1;
+#X obj 983 336 s sg1_vu;
+#X obj 1302 177 tabread4~ muestra;
+#X obj 1303 214 *~;
+#X msg 81 370 \; sg1_pr_metro 500 \; sg1_pr_tam 100 \; sg1_pr_vol 0.7
+\; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \;;
+#X obj 1452 158 r sg1_limpio;
+#X obj 1452 179 pack 0 10;
+#X obj 1452 200 line~;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 10 0 13 1;
+#X connect 10 0 63 1;
+#X connect 10 0 64 0;
+#X connect 10 0 51 1;
+#X connect 10 0 79 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 12 0 82 1;
+#X connect 13 0 17 0;
+#X connect 13 0 109 0;
+#X connect 14 0 32 0;
+#X connect 15 0 19 0;
+#X connect 15 0 76 0;
+#X connect 15 0 77 0;
+#X connect 16 0 20 0;
+#X connect 17 0 68 1;
+#X connect 18 0 14 0;
+#X connect 19 0 103 0;
+#X connect 20 0 15 1;
+#X connect 21 0 48 0;
+#X connect 24 0 25 0;
+#X connect 24 0 28 0;
+#X connect 24 0 31 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 29 0;
+#X connect 28 0 27 1;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 32 0 15 0;
+#X connect 33 0 34 0;
+#X connect 34 0 32 1;
+#X connect 36 0 37 0;
+#X connect 38 0 41 0;
+#X connect 39 0 40 0;
+#X connect 40 0 38 0;
+#X connect 42 0 21 0;
+#X connect 43 0 42 0;
+#X connect 43 0 47 1;
+#X connect 44 0 17 1;
+#X connect 44 0 33 0;
+#X connect 44 0 49 0;
+#X connect 45 0 44 0;
+#X connect 46 0 47 0;
+#X connect 47 0 45 0;
+#X connect 47 0 73 0;
+#X connect 48 0 49 1;
+#X connect 49 0 18 0;
+#X connect 50 0 75 0;
+#X connect 51 0 52 0;
+#X connect 52 0 68 0;
+#X connect 52 0 80 0;
+#X connect 53 0 63 0;
+#X connect 53 0 61 0;
+#X connect 54 0 53 0;
+#X connect 55 0 58 0;
+#X connect 56 0 57 0;
+#X connect 57 0 53 0;
+#X connect 58 0 56 0;
+#X connect 58 0 54 0;
+#X connect 59 0 60 0;
+#X connect 60 0 15 0;
+#X connect 61 0 62 0;
+#X connect 62 0 60 1;
+#X connect 63 0 59 0;
+#X connect 64 0 58 1;
+#X connect 65 0 24 0;
+#X connect 68 0 18 1;
+#X connect 71 0 16 0;
+#X connect 72 0 67 0;
+#X connect 73 0 74 0;
+#X connect 74 0 44 0;
+#X connect 75 0 46 0;
+#X connect 75 0 51 0;
+#X connect 80 0 82 0;
+#X connect 81 0 80 1;
+#X connect 82 0 23 0;
+#X connect 84 0 88 0;
+#X connect 88 0 89 0;
+#X connect 88 0 90 0;
+#X connect 88 1 75 1;
+#X connect 89 0 91 0;
+#X connect 90 0 93 0;
+#X connect 91 0 93 0;
+#X connect 96 0 46 0;
+#X connect 97 0 98 1;
+#X connect 103 0 108 0;
+#X connect 104 0 105 0;
+#X connect 104 0 107 0;
+#X connect 104 0 111 0;
+#X connect 105 0 93 0;
+#X connect 106 0 50 0;
+#X connect 107 0 72 0;
+#X connect 109 0 110 0;
+#X connect 110 0 15 0;
+#X connect 112 0 113 0;
+#X connect 113 0 114 0;
+#X connect 114 0 110 1;
+#X coords 0 -1 1 1 228 387 1 193 -48;
+#X restore 102 121 pd sg1;
+#N canvas -9 -9 1920 1026 escribir_archivo 0;
+#X obj 371 77 cnv 5 167 87 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 230 134 t b s;
+#X msg 180 170 open;
+#X obj 180 230 pack s s s;
+#X msg 180 255 set \$1 \$2\$3;
+#X msg 180 280 open nombre_de_archivo.wav;
+#X msg 270 170 .wav;
+#X obj 20 160 inlet~;
+#X obj 70 160 inlet~;
+#X obj 20 320 writesf~ 2;
+#X obj 377 82 cnv 5 157 78 empty empty GRABADOR 12 13 0 13 -204786
+-159808 0;
+#X msg 420 225 stop;
+#X symbolatom 390 112 20 0 0 0 - - -;
+#X obj 210 -5 loadbang;
+#X msg 210 25 nombre_de_archivo;
+#X obj 370 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 420 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 430 137 tgl 13 0 empty empty grabar -40 5 0 10 -133153 -262144
+-260097 0 1;
+#X obj 540 210 sel 1;
+#X msg 100 60 0;
+#X obj 453 144 cnv 1 8 8 empty grab_grabando ----- 13 -2 0 12 -1 -7
+0;
+#N canvas -9 -9 1920 1026 col 0;
+#X obj 80 156 s grab_grabando;
+#X msg 80 90 color -1 13;
+#X obj 80 35 inlet;
+#X obj 170 34 inlet;
+#X obj 170 59 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 80 60 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 170 90 color -1 -25;
+#X msg 93 118 label GRABANDO;
+#X msg 197 120 label -------;
+#X connect 1 0 0 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 1 0;
+#X connect 5 0 7 0;
+#X connect 6 0 0 0;
+#X connect 6 0 8 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X restore 540 250 pd col;
+#X obj -20 210 env~;
+#X obj -20 240 expr ($f1 + $f2) / 2;
+#X obj -20 265 s grab_vu;
+#X obj 471 88 hsl 48 14 0 100 0 0 empty grab_vu IN 36 5 0 10 -199729
+-260097 -262144 142 1;
+#X obj 370 228 t b b;
+#X obj 370 253 del 20;
+#X msg 370 278 start;
+#X obj 270 191 symbol;
+#X obj 210 50 symbol;
+#X msg 474 9 label -----;
+#X obj 474 29 s grab_grabando;
+#X connect 1 0 6 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 6 0 29 0;
+#X connect 7 0 9 0;
+#X connect 7 0 22 0;
+#X connect 8 0 9 1;
+#X connect 8 0 22 0;
+#X connect 11 0 9 0;
+#X connect 12 0 1 0;
+#X connect 13 0 14 0;
+#X connect 13 0 19 0;
+#X connect 13 0 31 0;
+#X connect 14 0 30 0;
+#X connect 15 0 26 0;
+#X connect 16 0 11 0;
+#X connect 17 0 18 0;
+#X connect 18 0 15 0;
+#X connect 18 0 21 0;
+#X connect 18 1 16 0;
+#X connect 18 1 21 1;
+#X connect 19 0 17 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 26 0 27 0;
+#X connect 26 1 5 0;
+#X connect 27 0 28 0;
+#X connect 28 0 9 0;
+#X connect 29 0 3 2;
+#X connect 30 0 12 0;
+#X connect 31 0 32 0;
+#X coords 0 -1 1 1 169 89 1 371 76;
+#X restore 560 419 pd escribir_archivo 1;
+#X obj 199 583 dac~;
+#X obj 355 125 cnv 15 378 217 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 358 129 cnv 15 371 210 empty empty INSTRUCCIONES 17 12 0 14
+-262144 -260097 0;
+#X obj 524 357 cnv 15 1 1 empty empty GRANULADOR 20 12 0 30 -108187
+-65569 0;
+#X obj 525 359 cnv 15 1 1 empty empty GRANULADOR 20 12 0 30 -120670
+-260097 0;
+#X obj 331 468 cnv 5 200 5 empty empty empty 20 12 0 14 -65569 -66577
+0;
+#X obj 530 398 cnv 5 5 75 empty empty empty 20 12 0 14 -65569 -66577
+0;
+#X obj 642 399 cnv 5 5 20 empty empty empty 20 12 0 14 -65569 -66577
+0;
+#X obj 530 398 cnv 5 117 5 empty empty empty 20 12 0 14 -65569 -66577
+0;
+#X text 365 163 1º pulsar el botón CARGAR ARCH para cargar una muestra
+de audio desde un archivo \; 2º elegir el tipo de reproducción del
+archivo original (aleatoria/normal) \; 3º seleccionar el tamaño del
+grano \; 4º podés disparar granos indiviudalmente con el botón "play.gr"
+\, o bien dispararlos a intervalos regulares de manera constante con
+el interruptor sinc. Los intervalos se definen con el número "iteración"
+(ms.). \;;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 1;
+#X connect 1 1 3 1;
+#X coords 0 -1 1 1 653 411 1 90 109;
+#X restore 270 160 pd interfaz;
+#X text 559 644 Para ingresar cualquier dato (número \, texto \, etc.)
+es necesario pulsar la casilla deseada \, teclear y luego apretar la
+tecla enter (de otra forma el dato no se almacena);
+#X text 673 715 ¿Qué sigue? --> Modificar Vrep de granos \; -->
+Leer más granos a la vez (densidad);
+#X text 559 587 Nota: antes de poder reproducir audio se debe seleccionar
+el dispositivo (pestaña "medios") y luego encender el DSP (pestaña
+"medios");
