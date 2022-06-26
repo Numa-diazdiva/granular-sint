@@ -1,8 +1,8 @@
 #N canvas -9 -9 1920 1026 10;
-#N canvas -9 -9 1920 1026 interfaz 0;
+#N canvas -9 -9 1920 1026 interfaz 1;
 #X obj 90 109 cnv 15 653 450 empty empty empty 20 12 0 14 -116509 -66577
 0;
-#N canvas -9 -9 1920 1026 sg1 0;
+#N canvas -9 -9 1920 1026 sg1 1;
 #X obj 1720 10 cnv 15 287 391 empty empty empty 20 12 0 14 -233017
 -66577 0;
 #X obj 193 -48 cnv 15 227 420 empty empty empty 20 12 0 14 -233017
@@ -18,8 +18,8 @@
 #X obj 1201 -431 openpanel;
 #X msg 1201 -410 read -resize \$1 muestra;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array muestra 1.11892e+007 float 2;
-#X coords 0 1 1.11892e+007 -1 200 140 1;
+#X array muestra 2.0396e+006 float 2;
+#X coords 0 1 2.0396e+006 -1 200 140 1;
 #X restore 207 -16 graph;
 #X obj 1201 -389 soundfiler;
 #X floatatom 1216 -362 15 0 0 0 - - -;
@@ -35,7 +35,7 @@
 #X obj 830 236 line~;
 #X floatatom 833 -277 10 0 0 0 - - -;
 #X obj 209 133 hsl 196 15 0 1 0 0 empty posicionlect empty -2 -8 0
-10 -133153 -240385 -1 0 1;
+10 -133153 -240385 -1 14779 1;
 #N canvas 846 241 453 353 loc 0;
 #X obj 94 100 snapshot~;
 #X obj 129 71 metro 20;
@@ -68,9 +68,9 @@
 #X obj 1790 355 table hanning 256;
 #X obj 1760 50 loadbang;
 #X obj 1760 75 s lb;
-#X obj 775 -372 * 44.1;
-#X floatatom 775 -413 5 0 0 0 - sg1_tam -;
-#X obj 833 -253 sig~;
+#X obj 772 -384 * 44.1;
+#X floatatom 772 -421 5 0 0 0 - sg1_tam -;
+#X obj 833 -210 sig~;
 #X obj 757 -131 *~;
 #X obj 470 -400 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 1 1;
@@ -154,7 +154,7 @@
 #X obj 222 399 hradio 15 1 0 2 sg1_rep_sw sg1_pr_rep_SW empty 0 -8
 0 10 -41611 -260097 -1 0;
 #X obj 340 348 hsl 54 15 0 1 0 0 sg1_limpio sg1_pr_limpio LIMPIO 19
-6 0 10 -74899 -131105 -262144 1100 1;
+6 0 10 -74899 -131105 -262144 0 1;
 #X obj 983 311 - 100;
 #X obj 120 95 r lb;
 #X msg 120 120 0;
@@ -167,13 +167,13 @@
 #X obj 1452 179 pack 0 10;
 #X obj 1452 200 line~;
 #X obj 218 292 hsl 70 10 -1 1 0 0 sg1_velrep empty VEL.REPROD -2 5
-0 9 -33289 -262144 -260097 5950 1;
-#X obj 863 -446 r sg1_velrep;
+0 9 -33289 -262144 -260097 3100 1;
+#X obj 862 -471 r sg1_velrep;
 #X obj 833 -301 *;
-#X obj 863 -353 t b f;
+#X obj 862 -378 t b f;
 #X obj 833 -324 f;
-#X obj 914 -421 r sg1_vrep_multi;
-#X obj 863 -378 *;
+#X obj 913 -446 r sg1_vrep_multi;
+#X obj 862 -403 *;
 #X obj 381 170 hradio 12 1 0 2 \$0-motor \$0-pr_motor motor -32 6 1
 10 -86853 -260097 -1 0;
 #X obj 206 200 cnv 2 130 3 sg1_repSW empty empty 20 11 0 14 -262144
@@ -207,7 +207,7 @@
 #X connect 8 0 3 0;
 #X connect 9 0 5 0;
 #X restore 624 -306 pd lector-m1;
-#X text 773 -436 tamGr;
+#X text 770 -440 tamGr;
 #N canvas 880 200 454 329 switch-m 0;
 #X obj 41 96 inlet~;
 #X obj 140 96 inlet~;
@@ -234,7 +234,7 @@
 #X connect 10 0 8 0;
 #X restore 625 -190 pd switch-m;
 #X text 623 -504 SEÑALES DE CONTROL;
-#X text 857 -468 VELOCIDAD REP;
+#X text 856 -493 VELOCIDAD REP;
 #X text 902 -279 en samples;
 #X text 1326 150 SEÑAL LIMPIA;
 #N canvas -30 358 1920 1026 lector-m2 0;
@@ -246,8 +246,6 @@
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 717 -254 pd lector-m2;
-#X msg 16 310 \; sg1_pr_metro 500 \; sg1_pr_tam 100 \; sg1_pr_vol 0.7
-\; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \; \$0-pr_motor 0 \;;
 #X obj 208 172 cnv 5 1 1 empty \$0-sg1_motor_label GRANO.Simple/Sinc
 4 5 0 12 -253619 -66577 0;
 #N canvas -9 -9 1920 1026 cambios-estado-GUI 0;
@@ -308,18 +306,18 @@
 #X obj 206 214 cnv 7 150 64 empty empty empty 20 12 0 14 -228856 -66577
 0;
 #X obj 283 226 nbx 5 14 -1e+037 1e+037 0 0 sg1_tam sg1_pr_tam dur.grano(ms)
-0 -6 0 8 -41611 -262144 -1 0 256;
+0 -6 0 8 -41611 -262144 -1 10 256;
 #X obj 222 263 cnv 2 100 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 217 256 tgl 15 0 sg1_metro_io empty sinc 25 0 0 10 -12484 -262144
--1 0 1;
+-1 1 1;
 #X obj 282 257 nbx 5 14 -1e+037 1e+037 0 0 sg1_metro sg1_pr_metro iteración
-0 -8 0 8 -45772 -262144 -1 0 256;
+0 -8 0 8 -45772 -262144 -1 73 256;
 #X obj 217 225 bng 15 250 50 0 gr_play \$0-pr_gr_play play.gr 19 7
 0 8 -41611 -260097 -260097;
 #X obj 215 309 hradio 10 1 0 4 \$0-sg1_factor empty factor: 43 5 0
-8 -228856 -159808 -262144 3;
-#X obj 955 -337 s \$0-sg1_vRep;
+8 -228856 -159808 -262144 2;
+#X obj 954 -362 s \$0-sg1_vRep;
 #X obj 318 314 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 356 295 cnv 1 2 20 empty empty empty 20 12 0 14 -260097 -66577
@@ -327,9 +325,21 @@
 #X obj 318 295 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 300 310 nbx 2 10 -1e+037 1e+037 0 0 empty \$0-sg1_factor_GUI
-empty 0 0 0 9 -261682 -159808 -1 40 256;
+empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X obj 300 292 nbx 5 10 -1e+037 1e+037 0 0 empty \$0-sg1_vRep empty
-0 0 0 9 -232576 -260097 -1 28.4058 256;
+0 0 0 9 -232576 -260097 -1 -2.02899 256;
+#X msg 16 310 \; sg1_pr_metro 500 \; sg1_pr_tam 20 \; sg1_pr_vol 0.7
+\; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \; \$0-pr_motor 0 \;;
+#X obj 652 4 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 652 25 metro;
+#X floatatom 652 67 5 0 0 0 - - -;
+#X obj 652 46 snapshot~;
+#X obj 646 111 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 10438 1;
+#X obj 790 -357 t b f;
+#X obj 833 -257 pack 0 10;
+#X obj 833 -233 line;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 9 0;
@@ -352,7 +362,7 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X connect 18 0 14 0;
 #X connect 19 0 70 0;
 #X connect 20 0 15 1;
-#X connect 21 0 40 0;
+#X connect 21 0 122 0;
 #X connect 24 0 25 0;
 #X connect 24 0 28 0;
 #X connect 24 0 31 0;
@@ -366,7 +376,7 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X connect 33 0 34 0;
 #X connect 34 0 32 1;
 #X connect 36 0 37 0;
-#X connect 38 0 85 1;
+#X connect 38 0 121 0;
 #X connect 39 0 38 0;
 #X connect 39 0 92 1;
 #X connect 39 0 99 0;
@@ -389,15 +399,16 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X connect 60 0 62 0;
 #X connect 60 1 50 1;
 #X connect 61 0 63 0;
-#X connect 62 0 106 0;
-#X connect 63 0 106 0;
+#X connect 62 0 105 0;
+#X connect 63 0 105 0;
 #X connect 64 0 65 1;
 #X connect 70 0 75 0;
 #X connect 71 0 72 0;
 #X connect 71 0 74 0;
-#X connect 71 0 100 0;
-#X connect 72 0 106 0;
-#X connect 72 0 109 0;
+#X connect 71 0 115 0;
+#X connect 72 0 105 0;
+#X connect 72 0 108 0;
+#X connect 72 0 88 0;
 #X connect 73 0 42 0;
 #X connect 74 0 81 0;
 #X connect 74 0 90 0;
@@ -413,12 +424,21 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X connect 85 0 83 0;
 #X connect 86 0 87 1;
 #X connect 87 0 84 0;
-#X connect 87 0 110 0;
+#X connect 87 0 109 0;
 #X connect 92 0 94 0;
 #X connect 94 0 41 0;
 #X connect 94 0 17 1;
 #X connect 94 0 33 0;
+#X connect 94 0 119 0;
 #X connect 99 0 94 1;
+#X connect 116 0 117 0;
+#X connect 117 0 119 0;
+#X connect 118 0 120 0;
+#X connect 119 0 118 0;
+#X connect 121 0 85 0;
+#X connect 121 1 85 1;
+#X connect 122 0 123 0;
+#X connect 123 0 40 0;
 #X coords 0 -1 1 1 228 420 1 193 -48;
 #X restore 102 121 pd sg1;
 #N canvas -9 -9 1920 1026 escribir_archivo 0;
@@ -476,7 +496,7 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X obj -20 240 expr ($f1 + $f2) / 2;
 #X obj -20 265 s grab_vu;
 #X obj 471 88 hsl 48 14 0 100 0 0 empty grab_vu IN 36 5 0 10 -199729
--260097 -262144 0 1;
+-260097 -262144 1622 1;
 #X obj 370 228 t b b;
 #X obj 370 253 del 20;
 #X msg 370 278 start;
@@ -583,3 +603,4 @@ grano y no hay un tiempo de silencio entre los granos. En el caso de
 la reproducción aleatoria \, el control de tiempo de la iteración
 permite ajustar cada cuánto tiempo se produce un cambio de posición
 puntero lector del archivo original., f 55;
+#X text 308 713 motor default \; vel_rep def;
