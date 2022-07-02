@@ -1,5 +1,5 @@
 #N canvas -9 -9 1920 1026 10;
-#N canvas -8 0 958 1016 interfaz 0;
+#N canvas -8 0 958 1016 interfaz 1;
 #X obj 90 109 cnv 15 653 450 empty empty empty 20 12 0 14 -116509 -66577
 0;
 #N canvas 422 93 1324 875 sg1 0;
@@ -18,8 +18,8 @@
 #X obj 1201 -431 openpanel;
 #X msg 1201 -410 read -resize \$1 muestra;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array muestra 2.97484e+006 float 2;
-#X coords 0 1 2.97484e+006 -1 200 140 1;
+#X array muestra 421045 float 2;
+#X coords 0 1 421045 -1 200 140 1;
 #X restore 207 -16 graph;
 #X obj 1201 -389 soundfiler;
 #X floatatom 1216 -362 15 0 0 0 - - -;
@@ -35,7 +35,7 @@
 #X obj 830 236 line~;
 #X floatatom 833 -277 10 0 0 0 - - -;
 #X obj 209 133 hsl 196 15 0 1 0 0 empty posicionlect empty -2 -8 0
-10 -133153 -240385 -1 8701 1;
+10 -133153 -240385 -1 674 1;
 #N canvas 846 241 453 353 loc 0;
 #X obj 94 100 snapshot~;
 #X obj 129 71 metro 20;
@@ -107,7 +107,7 @@
 #X obj 206 187 cnv 5 201 148 empty empty empty 20 12 0 14 -133153 -66577
 0;
 #X obj 370 223 vsl 11 70 0 4 0 0 empty sg1_pr_vol VOL -4 81 0 10 -99865
--260097 -252289 3450 1;
+-260097 -252289 3992 1;
 #X obj 470 -370 metro 100;
 #X obj 1090 320 outlet~;
 #X obj 1160 320 outlet~;
@@ -165,7 +165,7 @@
 #X obj 1452 179 pack 0 10;
 #X obj 1452 200 line~;
 #X obj 218 292 hsl 70 10 -1 1 0 0 sg1_velrep empty VEL.REPROD -2 5
-0 9 -33289 -262144 -260097 4000 1;
+0 9 -33289 -262144 -260097 6900 1;
 #X obj 862 -471 r sg1_velrep;
 #X obj 833 -301 *;
 #X obj 862 -378 t b f;
@@ -346,17 +346,17 @@
 #X obj 206 214 cnv 7 150 64 empty empty empty 20 12 0 14 -228856 -66577
 0;
 #X obj 283 226 nbx 5 14 -1e+037 1e+037 0 0 sg1_tam sg1_pr_tam dur.grano(ms)
-0 -6 0 8 -41611 -262144 -1 4 256;
+0 -6 0 8 -41611 -262144 -1 2 256;
 #X obj 222 263 cnv 2 100 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 217 256 tgl 15 0 sg1_metro_io sg1_pr_metro_io sinc 25 0 0 10
 -12484 -262144 -1 0 1;
 #X obj 282 257 nbx 5 14 -1e+037 1e+037 0 0 sg1_metro sg1_pr_metro iteración
-0 -8 0 8 -45772 -262144 -1 20 256;
+0 -8 0 8 -45772 -262144 -1 500 256;
 #X obj 217 225 bng 15 250 50 0 gr_play \$0-pr_gr_play play.gr 19 7
 0 8 -41611 -260097 -260097;
 #X obj 215 309 hradio 10 1 0 4 \$0-sg1_factor empty factor: 43 5 0
-8 -228856 -159808 -262144 2;
+8 -228856 -159808 -262144 0;
 #X obj 954 -362 s \$0-sg1_vRep;
 #X obj 318 314 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
@@ -365,9 +365,9 @@
 #X obj 318 295 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 300 310 nbx 2 10 -1e+037 1e+037 0 0 empty \$0-sg1_factor_GUI
-empty 0 0 0 9 -261682 -159808 -1 20 256;
+empty 0 0 0 9 -261682 -159808 -1 1 256;
 #X obj 300 292 nbx 5 10 -1e+037 1e+037 0 0 empty \$0-sg1_vRep empty
-0 0 0 9 -232576 -260097 -1 3.18841 256;
+0 0 0 9 -232576 -260097 -1 1 256;
 #X obj 790 -357 t b f;
 #X obj 833 -257 pack 0 10;
 #X obj 833 -233 line;
@@ -384,12 +384,13 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 0 10 -99865 -262144 -1 1 1;
 #X obj 355 -39 cnv 5 5 5 empty \$0_sg1_ctlin_gui empty 20 12 0 14 -24198
 -66577 0;
-#X msg 16 310 \; sg1_pr_metro 500 \; sg1_pr_tam 20 \; sg1_pr_vol 0.7
-\; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \; \$0-pr_motor 0 \; \$0_sg1_ctlin-pr
-0 \;;
 #X obj 127 -434 r \$0_sg1_ctlin;
 #X obj 57 -327 s esclavo_play;
 #X msg 127 -413 \; sg1_pr_metro_io 0;
+#X obj 370 -125 r lb;
+#X msg 370 -104 0;
+#X msg 16 310 \; sg1_pr_metro 500 \; sg1_pr_tam 20 \; sg1_pr_vol 0.7
+\; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \;;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 9 0;
@@ -455,7 +456,7 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X connect 69 0 74 0;
 #X connect 70 0 71 0;
 #X connect 70 0 73 0;
-#X connect 70 0 127 0;
+#X connect 70 0 132 0;
 #X connect 71 0 104 0;
 #X connect 71 0 107 0;
 #X connect 71 0 87 0;
@@ -490,10 +491,12 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X connect 121 0 122 0;
 #X connect 121 1 49 0;
 #X connect 122 0 106 0;
-#X connect 123 0 129 0;
+#X connect 123 0 128 0;
 #X connect 124 0 123 1;
-#X connect 128 0 124 0;
-#X connect 128 0 130 0;
+#X connect 127 0 124 0;
+#X connect 127 0 129 0;
+#X connect 130 0 131 0;
+#X connect 131 0 125 0;
 #X coords 0 -1 1 1 228 420 1 193 -48;
 #X restore 102 121 pd sg1;
 #N canvas -9 -9 1920 1026 escribir_archivo 0;
@@ -503,7 +506,7 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X msg 180 170 open;
 #X obj 180 230 pack s s s;
 #X msg 180 255 set \$1 \$2\$3;
-#X msg 180 280 open nombre_de_archivo.wav;
+#X msg 180 280 open iterado1.wav;
 #X msg 270 170 .wav;
 #X obj 20 160 inlet~;
 #X obj 70 160 inlet~;
@@ -522,8 +525,8 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 -260097 0 1;
 #X obj 540 210 sel 1;
 #X msg 100 60 0;
-#X obj 453 144 cnv 1 8 8 empty grab_grabando ----- 13 -2 0 12 -1 -7
-0;
+#X obj 453 144 cnv 1 8 8 empty grab_grabando ------- 13 -2 0 12 -1
+-7 0;
 #N canvas -9 -9 1920 1026 col 0;
 #X obj 80 156 s grab_grabando;
 #X msg 80 90 color -1 13;
@@ -551,7 +554,7 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X obj -20 240 expr ($f1 + $f2) / 2;
 #X obj -20 265 s grab_vu;
 #X obj 471 88 hsl 48 14 0 100 0 0 empty grab_vu IN 36 5 0 10 -199729
--260097 -262144 472 1;
+-260097 -262144 0 1;
 #X obj 370 228 t b b;
 #X obj 370 253 del 20;
 #X msg 370 278 start;
@@ -668,7 +671,7 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 10 -128992 -260097 -1 19206 1;
 #X obj 437 358 spigot;
 #X msg 470 312 0, f 2;
-#X obj 470 331 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 470 331 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 508 293 1, f 2;
 #X obj 432 247 sel 0;
@@ -732,11 +735,19 @@ empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X msg 558 92 100;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array graf 100 float 3;
-#A 0 0 0 0 0 0 0 0 0.464286 0 0.15 0 0 0 0 0 0 0 0 0.264286 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0.3 0 0.707143 0 0 0 0 0 0 0 0 0 0 0 0 0.135714
-0.135714 0 0 0 0 0 0 0 0 0 0 0.607143 0.592858 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0.228571 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.128571 0.5 0 0 0 0
-0 0;
+#A 0 0 0 0 0.114286 0.0928571 0.0928571 0.0999997 0.102381 0.104761
+0.0785714 0.108928 0.110713 0.112499 0.114285 0.116666 0.119046 0.121427
+0.121427 0.124999 0.12857 0.135712 0.139284 0.142855 0.142855 0.146426
+0.149997 0.15714 0.15714 0.114286 0.114286 0.114286 0.114286 0.178568
+0.18571 0.189281 0.192853 0.199995 0.207138 0.542857 0.221423 0.235708
+0.242851 0.257136 0.135714 0.135714 0.137143 0.138571 0.14 0.141428
+0.142857 0.335704 0.349989 0.685714 0.699999 0.389273 0.399987 0.419033
+0.757143 0.771428 0.785713 0.796427 0.807141 0.499982 0.178571 0.185714
+0.196428 0.871429 0.878571 0.885714 0.885714 0.628548 0.646404 0.664261
+0.699973 0.710687 0.742829 0.807112 0.335714 0.357142 0.385712 0.404759
+0.423806 0.449995 0.664262 0.085714 0.107142 0.714259 0.535714 0.557142
+0.571427 0.2 0.214285 0.264283 0.335714 0.371427 0 0 0 0.464286 0.578566
+;
 #X coords 0 1 100 0 200 140 1 0 0;
 #X restore 109 35 graph;
 #X obj 437 412 outlet esclavo_play;
