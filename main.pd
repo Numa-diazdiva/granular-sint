@@ -1,8 +1,8 @@
 #N canvas -9 -9 1920 1026 10;
-#N canvas -8 0 958 1016 interfaz 0;
+#N canvas 2046 9 958 1016 interfaz 1;
 #X obj 90 109 cnv 15 653 450 empty empty empty 20 12 0 14 -116509 -66577
 0;
-#N canvas 422 93 1324 875 sg1 0;
+#N canvas 1911 -9 1920 1026 sg1 1;
 #X obj 1720 10 cnv 15 287 391 empty empty empty 20 12 0 14 -233017
 -66577 0;
 #X obj 193 -48 cnv 15 227 420 empty empty empty 20 12 0 14 -233017
@@ -18,14 +18,14 @@
 #X obj 1201 -431 openpanel;
 #X msg 1201 -410 read -resize \$1 muestra;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array muestra 8.31366e+006 float 2;
-#X coords 0 1 8.31366e+006 -1 200 140 1;
+#X array muestra 115391 float 2;
+#X coords 0 1 115391 -1 200 140 1;
 #X restore 207 -16 graph;
 #X obj 1201 -389 soundfiler;
 #X floatatom 1216 -362 15 0 0 0 - - -;
 #X obj 1273 -287 expr 44100 / $f1;
 #X obj 1273 -267 phasor~;
-#X obj 1273 -246 *~;
+#X obj 1273 -193 *~;
 #X obj 897 18 tabread4~ muestra;
 #X obj 1104 251 *~;
 #X obj 830 215 pack 0 10;
@@ -35,7 +35,7 @@
 #X obj 830 236 line~;
 #X floatatom 833 -277 10 0 0 0 - - -;
 #X obj 209 133 hsl 196 15 0 1 0 0 empty posicionlect empty -2 -8 0
-10 -133153 -240385 -1 8789 1;
+10 -133153 -240385 -1 13867 1;
 #N canvas 846 241 453 353 loc 0;
 #X obj 94 100 snapshot~;
 #X obj 129 71 metro 20;
@@ -107,7 +107,7 @@
 #X obj 206 187 cnv 5 201 148 empty empty empty 20 12 0 14 -133153 -66577
 0;
 #X obj 370 223 vsl 11 70 0 4 0 0 empty sg1_pr_vol VOL -4 81 0 10 -99865
--260097 -252289 4633 1;
+-260097 -252289 1183 1;
 #X obj 470 -370 metro 100;
 #X obj 1090 320 outlet~;
 #X obj 1160 320 outlet~;
@@ -165,7 +165,7 @@
 #X obj 1452 179 pack 0 10;
 #X obj 1452 200 line~;
 #X obj 218 292 hsl 70 10 -1 1 0 0 sg1_velrep empty VEL.REPROD -2 5
-0 9 -33289 -262144 -260097 2300 1;
+0 9 -33289 -262144 -260097 6900 1;
 #X obj 862 -471 r sg1_velrep;
 #X obj 833 -301 *;
 #X obj 862 -378 t b f;
@@ -173,7 +173,7 @@
 #X obj 913 -446 r sg1_vrep_multi;
 #X obj 862 -403 *;
 #X obj 381 170 hradio 12 1 0 2 \$0-motor \$0-pr_motor off -32 6 1 10
--86853 -260097 -1 0;
+-86853 -260097 -1 1;
 #X obj 206 200 cnv 2 130 3 sg1_repSW empty empty 20 11 0 14 -262144
 -66577 0;
 #X obj 224 195 bng 14 250 50 0 \$0-sg1_reproduccion empty reproducción
@@ -346,17 +346,17 @@
 #X obj 206 214 cnv 7 150 64 empty empty empty 20 12 0 14 -228856 -66577
 0;
 #X obj 283 226 nbx 5 14 -1e+037 1e+037 0 0 sg1_tam sg1_pr_tam dur.grano(ms)
-0 -6 0 8 -41611 -262144 -1 34 256;
+0 -6 0 8 -41611 -262144 -1 255 256;
 #X obj 222 263 cnv 2 100 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 217 256 tgl 15 0 sg1_metro_io sg1_pr_metro_io sinc 25 0 0 10
 -12484 -262144 -1 0 1;
 #X obj 282 257 nbx 5 14 -1e+037 1e+037 0 0 sg1_metro sg1_pr_metro iteración
-0 -8 0 8 -45772 -262144 -1 46 256;
+0 -8 0 8 -45772 -262144 -1 492 256;
 #X obj 217 225 bng 15 250 50 0 gr_play \$0-pr_gr_play play.gr 19 7
 0 8 -41611 -260097 -260097;
 #X obj 215 309 hradio 10 1 0 4 \$0-sg1_factor empty factor: 43 5 0
-8 -228856 -159808 -262144 3;
+8 -228856 -159808 -262144 2;
 #X obj 954 -362 s \$0-sg1_vRep;
 #X obj 318 314 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
@@ -365,9 +365,9 @@
 #X obj 318 295 cnv 2 40 2 empty empty empty 20 12 0 14 -260097 -66577
 0;
 #X obj 300 310 nbx 2 10 -1e+037 1e+037 0 0 empty \$0-sg1_factor_GUI
-empty 0 0 0 9 -261682 -159808 -1 40 256;
+empty 0 0 0 9 -261682 -159808 -1 20 256;
 #X obj 300 292 nbx 5 10 -1e+037 1e+037 0 0 empty \$0-sg1_vRep empty
-0 0 0 9 -232576 -260097 -1 -13.3333 256;
+0 0 0 9 -232576 -260097 -1 20 256;
 #X obj 790 -357 t b f;
 #X obj 833 -257 pack 0 10;
 #X obj 833 -233 line;
@@ -391,6 +391,17 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X msg 370 -104 0;
 #X msg 16 310 \; sg1_pr_metro 500 \; sg1_pr_tam 20 \; sg1_pr_vol 0.7
 \; sg1_pr_rep_SW 0 \; sg1_pr_limpio 0 \;;
+#X obj 534 106 hsl 127 8 0 1 0 0 empty empty empty -2 -8 0 10 -261234
+-159808 -1 4300 1;
+#X obj 534 119 hsl 127 8 0 1 0 0 empty empty empty -2 -8 0 10 -261234
+-159808 -1 6200 1;
+#X obj 525 237 expr $f2 - $f1;
+#X floatatom 525 258 5 0 0 0 - - -;
+#X obj 525 185 f;
+#X obj 552 185 f;
+#X text 601 148 ojo que acá duplico;
+#X obj 525 148 t b b;
+#X obj 557 335;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 9 0;
@@ -497,6 +508,15 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X connect 127 0 129 0;
 #X connect 130 0 131 0;
 #X connect 131 0 125 0;
+#X connect 133 0 137 1;
+#X connect 133 0 140 0;
+#X connect 134 0 138 1;
+#X connect 134 0 140 0;
+#X connect 135 0 136 0;
+#X connect 137 0 135 0;
+#X connect 138 0 135 1;
+#X connect 140 0 137 0;
+#X connect 140 1 138 0;
 #X coords 0 -1 1 1 228 420 1 193 -48;
 #X restore 102 121 pd sg1;
 #N canvas -9 -9 1920 1026 escribir_archivo 0;
@@ -506,7 +526,7 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X msg 180 170 open;
 #X obj 180 230 pack s s s;
 #X msg 180 255 set \$1 \$2\$3;
-#X msg 180 280 open granos_t_65.wav;
+#X msg 180 280 open sinc2.wav;
 #X msg 270 170 .wav;
 #X obj 20 160 inlet~;
 #X obj 70 160 inlet~;
@@ -734,13 +754,15 @@ empty 0 0 0 9 -261682 -159808 -1 40 256;
 #X msg 648 71 1000;
 #N canvas 571 165 450 250 (subpatch) 0;
 #X array graf 150 float 3;
-#A 0 0 0 0 0 0 0 0 0 0 0.4 0.178571 0 0 0.857143 0 0 0 0 0 0 0 0 0
-0 0 0 0 0.257143 0 0 0 0.335714 0 0.657143 0 0 0 0 0 0 0 0 0 0 0 0.321429
-0 0 0 0.092858 0 0 0 0 0 0 0.685714 0 0 0 0.471429 0.785714 0.785714
-0.785714 0 0 0.228571 0 0 0.621429 0 0 0 0 0 0 0 0.914286 0 0 0 0 0
-0.15 0 0.392857 0.7 0 0 0 0 0 0 0 0 0 0 0 0.635714 0 0 0 0 0 0 0 0.15
-0 0 0 0 0 0 0 0 0 0.642857 0.142857 0.142857 0 0 0 0 0 0 0 0.521429
-0.871429 0 0 0 0 0 0 0 0 0 0 0 0.7 0 0 0 0 0.671429 0 0 0 0 0;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.342857 0 0 0 0 0 0 0 0 0.292857
+0 0 0 0 0 0 0 0.6 0.607143 0.607143 0.785714 0.25 0 0 0 0 0 0 0 0 0
+0 0 0 0 0.378571 0.528571 0.292855 0 0 0 0 0 0.2 0.2 0.2 0 0 0 0 0
+0 0 0 0 0 0.6 0.607143 0.371428 0.385714 0 0 0 0 0.692857 0.707143
+0 0 0 0 0 0 0.742857 0.464286 0.742857 0.742857 0.739286 0.392856 0.714285
+0 0.15 0.157143 0 0 0 0 0 0 0 0 0 0 0.542857 0.785714 0.0785714 0.571429
+0.592858 0.600001 0.607144 0 0 0 0 0 0 0.692857 0.707143 0 0.45 0 0
+0.764286 0.767857 0.771429 0.778572 0.778572 0 0 0 0 0 0 0 0.757143
+0.4 0 0.171429 0 0 0 0 0 0 0;
 #X coords 0 1 150 0 300 140 1 0 0;
 #X restore 107 34 graph;
 #X obj 535 412 outlet esclavo_play;
